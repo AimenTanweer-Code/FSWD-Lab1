@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - FSWD Lab1</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-back">
+            <a href="index.html" class="btn">← Back to Home</a>
+        </nav>
+        
+        <header>
+            <h1>Basic Calculator</h1>
+            <p>Simple arithmetic operations using HTML & CSS</p>
+        </header>
+        
+        <main>
+            <div class="calculator">
+                <div class="display">
+                    <input type="text" id="display" readonly placeholder="0">
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn-clear" onclick="clearDisplay()">C</button>
+                    <button class="btn-clear" onclick="deleteLast()">⌫</button>
+                    <button class="btn-operator" onclick="appendOperator('/')">/</button>
+                    <button class="btn-operator" onclick="appendOperator('*')">×</button>
+                    
+                    <button class="btn-number" onclick="appendNumber('7')">7</button>
+                    <button class="btn-number" onclick="appendNumber('8')">8</button>
+                    <button class="btn-number" onclick="appendNumber('9')">9</button>
+                    <button class="btn-operator" onclick="appendOperator('-')">-</button>
+                    
+                    <button class="btn-number" onclick="appendNumber('4')">4</button>
+                    <button class="btn-number" onclick="appendNumber('5')">5</button>
+                    <button class="btn-number" onclick="appendNumber('6')">6</button>
+                    <button class="btn-operator" onclick="appendOperator('+')">+</button>
+                    
+                    <button class="btn-number" onclick="appendNumber('1')">1</button>
+                    <button class="btn-number" onclick="appendNumber('2')">2</button>
+                    <button class="btn-number" onclick="appendNumber('3')">3</button>
+                    <button class="btn-equals" onclick="calculate()" rowspan="2">=</button>
+                    
+                    <button class="btn-number btn-zero" onclick="appendNumber('0')">0</button>
+                    <button class="btn-number" onclick="appendNumber('.')">.</button>
+                </div>
+            </div>
+            
+            <div class="calculator-info">
+                <h3>Features:</h3>
+                <ul>
+                    <li>Basic arithmetic operations (+, -, ×, /)</li>
+                    <li>Decimal number support</li>
+                    <li>Clear and delete functions</li>
+                    <li>Keyboard-friendly design</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        
+        function appendNumber(number) {
+            if (display.value === '0' && number !== '.') {
+                display.value = number;
+            } else {
+                display.value += number;
+            }
+        }
+        
+        function appendOperator(operator) {
+            const lastChar = display.value.slice(-1);
+            if (display.value && '+-*/'.indexOf(lastChar) === -1) {
+                display.value += operator;
+            }
+        }
+        
+        function clearDisplay() {
+            display.value = '';
+        }
+        
+        function deleteLast() {
+            display.value = display.value.slice(0, -1);
+        }
+        
+        function calculate() {
+            try {
+                let expression = display.value.replace(/×/g, '*');
+                let result = eval(expression);
+                display.value = result;
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+        
+        // Keyboard support
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if ('0123456789.'.includes(key)) {
+                appendNumber(key);
+            } else if ('+-*/'.includes(key)) {
+                appendOperator(key);
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                clearDisplay();
+            } else if (key === 'Backspace') {
+                deleteLast();
+            }
+        });
+    </script>
+</body>
+</html>
