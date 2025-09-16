@@ -1,0 +1,324 @@
+/* Timetable Specific Styles */
+.timetable-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.semester-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+}
+
+.semester-info h3 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.info-item .label {
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.info-item .value {
+    font-weight: bold;
+}
+
+.timetable-wrapper {
+    overflow-x: auto;
+    padding: 25px;
+}
+
+.timetable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 800px;
+}
+
+.timetable th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.timetable th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.timetable th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.timetable td {
+    padding: 12px 8px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    vertical-align: top;
+}
+
+.time-slot {
+    background: #f8f9fa !important;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+    position: sticky;
+    left: 0;
+    z-index: 5;
+}
+
+.time-header {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    position: sticky;
+    left: 0;
+    z-index: 15;
+}
+
+/* Subject Styles */
+.subject {
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.subject:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.subject-name {
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.room {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-bottom: 2px;
+}
+
+.instructor {
+    font-size: 0.7rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Subject Categories */
+.math {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: #333;
+}
+
+.programming {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+}
+
+.database {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #333;
+}
+
+.network {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.web {
+    background: linear-gradient(135deg, #51cf66 0%, #69db7c 100%);
+    color: white;
+}
+
+.elective {
+    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    color: white;
+}
+
+/* Break Styles */
+.break {
+    background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+    color: #666;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.lunch {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    color: white;
+    font-weight: bold;
+}
+
+/* Legend */
+.legend {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    margin-top: 20px;
+}
+
+.legend h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timetable-wrapper {
+        padding: 15px;
+    }
+    
+    .semester-info {
+        padding: 20px 15px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .timetable {
+        font-size: 0.8rem;
+        min-width: 700px;
+    }
+    
+    .timetable th,
+    .timetable td {
+        padding: 8px 6px;
+    }
+    
+    .subject {
+        height: 70px;
+        padding: 6px;
+    }
+    
+    .subject-name {
+        font-size: 0.8rem;
+    }
+    
+    .room,
+    .instructor {
+        font-size: 0.65rem;
+    }
+    
+    .legend {
+        padding: 20px 15px;
+    }
+    
+    .legend-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timetable {
+        min-width: 600px;
+        font-size: 0.75rem;
+    }
+    
+    .timetable th,
+    .timetable td {
+        padding: 6px 4px;
+    }
+    
+    .subject {
+        height: 60px;
+        padding: 4px;
+    }
+    
+    .subject-name {
+        font-size: 0.75rem;
+    }
+    
+    .room,
+    .instructor {
+        font-size: 0.6rem;
+    }
+    
+    .legend-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .nav-back {
+        display: none;
+    }
+    
+    .timetable-container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .timetable {
+        font-size: 0.8rem;
+    }
+    
+    .subject {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+}
